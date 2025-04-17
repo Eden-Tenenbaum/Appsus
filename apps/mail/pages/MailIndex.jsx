@@ -28,10 +28,12 @@ export function MailIndex() {
                 showErrorMsg(`couldn't remove Mail`)
             })
     }
-    
+
+    // console.log('you are here')
+
     return (
         <div className='mails-container'>
-            <h2>Mail list</h2>
+            {/* <MailFolderList /> */}
             <MailList mails={mails} onRemove={removeMail} />
         </div>
     )

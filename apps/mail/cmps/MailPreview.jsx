@@ -2,31 +2,39 @@ export function MailPreview({ mail }) {
     // return <div>Mail preview</div>
 
     function formatTimeSent(timestamp) {
-        const now = Date.now()
-        const diff = now - timestamp
+        const now = new Date()
+        const sentDate = new Date(timestamp)
 
-        const minute = 1000 * 60
-        const hour = minute * 60
-        const day = hour * 24
-        const year = day * 365.25
+        const isSameDay =
+            now.getFullYear() === sentDate.getFullYear() &&
+            now.getMonth() === sentDate.getMonth() &&
+            now.getDate() === sentDate.getDate()
 
-        if (diff < minute) return 'Just now'
-        if (diff < hour) return `${Math.floor(diff / minute)} minute(s) ago`
-        if (diff < day) return `${Math.floor(diff / hour)} hour(s) ago`
-        if (diff < year) {
-            const date = new Date(timestamp)
-            return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) // e.g. Apr 17
+        if (isSameDay) {
+            return sentDate.toLocaleTimeString(undefined, {
+                hour: 'numeric',
+                minute: '2-digit',
+            })
+        } else {
+            return sentDate.toLocaleDateString(undefined, {
+                month: 'short',
+                day: 'numeric',
+                ...(now.getFullYear() === sentDate.getFullYear() ? {} : { year: 'numeric' })
+            })
         }
+    }
 
-        const yearsAgo = Math.floor(diff / year)
-        return `${yearsAgo} year${yearsAgo > 1 ? 's' : ''} ago`
+    function limitText(text, maxLength = 60) {
+        if (!text) return ''
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text
+
     }
 
     return (
         <tr>
-            <td className='mail-from'>{mail.from}</td>
-            <td className='mail-subject'>{mail.subject}</td>
-            <td className='mail-body'>{mail.body}</td>
+            <td className='mail-from'>{limitText(mail.from, 40)}</td>
+            <td className='mail-subject'>{limitText(mail.subject)}</td>
+            <td className='mail-body'>{limitText(mail.body)}</td>
             <td className='mail-date'>{formatTimeSent(mail.sentAt)}</td>
             {/* <td> <button></button> </td>
             <td> <button></button> </td> */}

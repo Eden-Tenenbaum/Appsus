@@ -10,14 +10,6 @@ export function MailList({ mails, onRemove }) {
     console.log('mails: ', mails)
     return (<section className='mails-table'>
         <table>
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Sent At</th>
-                </tr>
-            </thead>
             <tbody>
                 {mails.map(mail =>
                     // <tr key={mail.id}>

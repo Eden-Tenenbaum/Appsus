@@ -112,7 +112,7 @@ function _createMails() {
         id: 'e103',
         createdAt: 1744892980857,
         subject: 'Thanks again!',
-        body: 'Just wanted to say thanks for your help last week!',
+        body: 'Just wanted to say thanks for your help last week! also im adding text so this willl be a looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong message',
         isRead: true,
         sentAt: 1724892980857,
         removedAt: null,

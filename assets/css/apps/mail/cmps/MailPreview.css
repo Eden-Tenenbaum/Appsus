@@ -1,0 +1,51 @@
+.mails-table table {
+    width: 100%;
+    padding-left: 5px;
+}
+
+.mails-table tr {
+    display: grid;
+    grid-template-columns: 25% 15% 50% 10%;
+    padding: 10px 0px;
+    border-bottom: 0.1px solid rgba(128, 128, 128, 0.3);
+    min-height: 40px;
+}
+
+.mails-table table tbody tr td:nth-child(3n) {
+    opacity: 0.7;
+    padding-right: 6px;
+}
+
+.mails-table table tbody tr td:nth-child(4n) {
+    font-size: 0.8rem;
+}
+
+@media(max-width: 700px) {
+    .mails-table tr {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        margin-bottom: 0.1em;
+    }
+
+    .mails-table tr td {
+        display: block;
+        padding: 0.3em 0;
+        text-align: left;
+    }
+
+    .mails-table tr td:nth-child(2n) {
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+
+    .mails-table tr td:nth-child(3n) {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .mails-table tr td:last-child {
+        grid-column: 2/3;
+        grid-row: 2/3;
+}
+}
