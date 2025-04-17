@@ -9,6 +9,11 @@
     padding: 10px 0px;
     border-bottom: 0.1px solid rgba(128, 128, 128, 0.3);
     min-height: 40px;
+    align-items: center;
+}
+
+.mails-table table tbody tr td:first-child {
+    margin-left: 1px;
 }
 
 .mails-table table tbody tr td:nth-child(3n) {
@@ -18,6 +23,13 @@
 
 .mails-table table tbody tr td:nth-child(4n) {
     font-size: 0.8rem;
+}
+
+.mails-table tr:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+    border: 0.1px solid rgba(128, 128, 128, 0.3);
 }
 
 @media(max-width: 700px) {
@@ -49,3 +61,4 @@
         grid-row: 2/3;
 }
 }
+

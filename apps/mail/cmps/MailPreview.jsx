@@ -1,7 +1,7 @@
 export function MailPreview({ mail }) {
     // return <div>Mail preview</div>
 
-    function formatTimeSent(timestamp) {
+    function formatTimeSent(timestamp) { //move to util.service
         const now = new Date()
         const sentDate = new Date(timestamp)
 
@@ -24,7 +24,7 @@ export function MailPreview({ mail }) {
         }
     }
 
-    function limitText(text, maxLength = 60) {
+    function limitText(text, maxLength = 60) { //move to util.service
         if (!text) return ''
         return text.length > maxLength ? text.slice(0, maxLength) + '...' : text
 

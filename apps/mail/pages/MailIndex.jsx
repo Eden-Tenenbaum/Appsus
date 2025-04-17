@@ -7,7 +7,7 @@ import { MailPreview } from "../cmps/MailPreview.jsx"
 import { MailDetails } from "../cmps/MailDetails.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
-import { MailCompose } from "../cmps/MailCompose.jsx"
+
 
 
 export function MailIndex() {
@@ -33,7 +33,7 @@ export function MailIndex() {
 
     return (
         <div className='mails-container'>
-            {/* <MailFolderList /> */}
+            <MailFolderList mails={mails} />
             <MailList mails={mails} onRemove={removeMail} />
         </div>
     )

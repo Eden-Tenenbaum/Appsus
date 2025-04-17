@@ -1,1 +1,7 @@
-`this will be a component in the future`
+
+
+export function MailCompose() {
+    return <button className='compose-btn'>
+        <i className='fa-solid fa-pencil'></i> Compose
+    </button>
+}
