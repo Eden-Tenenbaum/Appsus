@@ -12,21 +12,18 @@ export function NoteIndex() {
                 id: 'n101',
                 type: 'NoteTxt',
                 isPinned: true,
-                style: { backgroundColor: '#f28b82' },
                 info: { txt: 'fullstack Me Baby!' }
             },
             {
                 id: 'n102',
                 type: 'NoteImg',
                 isPinned: false,
-                style: { backgroundColor: '#d7aefb' },
-                info: { url: '', alt: 'image-placeholder', title: 'Cute Kitten' }
+                info: { url: '/assets/img/1.jpg', alt: 'image-placeholder', title: 'Cute Kitten' }
             },
             {
                 id: 'n103',
                 type: 'NoteTodos',
                 isPinned: false,
-                style: { backgroundColor: '#fff475' },
                 info: {
                     title: 'Get my stuff together',
                     todos: [
