@@ -14,7 +14,7 @@
 }
 
 .mails-table table tbody tr td {
-    padding: 2px 5px;
+    padding: 4px 5px;
 }
 
 .mails-table table tbody tr td:nth-child(3n) {
@@ -61,4 +61,3 @@
         grid-row: 2/3;
 }
 }
-
