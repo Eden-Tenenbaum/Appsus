@@ -8,11 +8,19 @@ _createNotes()
 
 export const noteService = {
     query,
+    save,
 }
 
 
 function query(filterBy = {}) {
     return storageService.query(NOTE_KEY)
+}
+function save(note) {
+    if(note.id) {
+        return storageService.put(NOTE_KEY,note)
+    } else {
+        return storageService.post(NOTE_KEY,note)
+    }
 }
 
 function _createNotes() {
