@@ -1,1 +1,20 @@
  /* note index */
+ .note-preview {
+     /* display: inline-block; */
+     width: 100%;
+     break-inside: avoid;
+     border-radius: 8px;
+     /* box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 2px 6px rgb(60 64 67 / 15%); */
+     padding: 3px;
+ }
+
+ .note-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+
+
+ .note-index>h2 {
+    margin:10px 10px 10px  10px;
+ }

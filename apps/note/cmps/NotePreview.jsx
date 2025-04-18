@@ -3,9 +3,9 @@
 export function NotePreview({ note }) {
     const DynamicCmp = getCmp(note.type)
 
-    return <article className="note-preview" style={{ backgroundColor: note.style && note.style.backgroundColor }}>
+    return <div className="note-preview" style={{ backgroundColor: note.style && note.style.backgroundColor }}>
         <DynamicCmp info={note.info} />
-    </article>
+    </div>
 }
 
 function getCmp(type) {
@@ -22,24 +22,28 @@ function getCmp(type) {
 }
 
 function NoteTxt({ info }) {
-    return <p>{info.txt}</p>
+    return <div className="note">
+        <div className="note-txt">{info.txt}</div>
+    </div>
 }
 
 function NoteImg({ info }) {
-    return <div>
-        <h4>{info.title}</h4>
-        <img src={info.url} alt={info.alt} style={{ maxWidth: '100%' }} />
+    return <div className="note">
+        <h4 className="note-title">{info.title}</h4>
+        <img src={info.url} alt={info.alt} />
     </div>
 }
 
 
 function NoteTodos({ info }) {
-    return <div>
-        <h4>{info.title}</h4>
+    return <div className="note">
+        <h4 className="note-title">{info.title}</h4>
         <ul>
             {info.todos.map((todo, idx) => (
-                <li key={idx} style={{ textDecoration: todo.doneAt ? 'line-through' : 'none' }}>
-                    {todo.txt}
+                <li key={idx} style={{ className: todo.doneAt ? 'line-through' : 'none' }}>
+                    <div className="note-txt">
+                        {todo.txt}
+                    </div>
                 </li>
             ))}
         </ul>
