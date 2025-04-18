@@ -7,7 +7,9 @@ export const utilService = {
     getDayName,
     getMonthName,
     loadFromStorage,
-    saveToStorage
+    saveToStorage,
+    formatTimeSent,
+    limitText
 }
 
 function saveToStorage(key, val) {
@@ -72,3 +74,30 @@ function getMonthName(date) {
     return monthNames[date.getMonth()]
 }
 
+function formatTimeSent(timestamp) { //move to util.service
+    const now = new Date()
+    const sentDate = new Date(timestamp)
+
+    const isSameDay =
+        now.getFullYear() === sentDate.getFullYear() &&
+        now.getMonth() === sentDate.getMonth() &&
+        now.getDate() === sentDate.getDate()
+
+    if (isSameDay) {
+        return sentDate.toLocaleTimeString(undefined, {
+            hour: 'numeric',
+            minute: '2-digit',
+        })
+    } else {
+        return sentDate.toLocaleDateString(undefined, {
+            month: 'short',
+            day: 'numeric',
+            ...(now.getFullYear() === sentDate.getFullYear() ? {} : { year: 'numeric' })
+        })
+    }
+}
+
+function limitText(text, maxLength = 60) { //move to util.service
+    if (!text) return ''
+    return text.length > maxLength ? text.slice(0, maxLength) + '...' : text
+}

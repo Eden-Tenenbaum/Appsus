@@ -1,5 +1,5 @@
 const { useState, useEffect } = React
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, Route, Routes, Navigate } = ReactRouterDOM
 
 import { mailsService } from "../services/mail.service.js"
 import { MailList } from "../cmps/MailList.jsx"
@@ -34,7 +34,13 @@ export function MailIndex() {
     return (
         <div className='mails-container'>
             <MailFolderList mails={mails} />
-            <MailList mails={mails} onRemove={removeMail} />
+            <Routes>
+                <Route path="/" element={<Navigate to="inbox" />} />
+                <Route
+                    path=":folder"
+                    element={<MailList mails={mails} onRemove={removeMail} />}
+                />
+            </Routes>
         </div>
     )
 }

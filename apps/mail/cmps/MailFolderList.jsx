@@ -1,15 +1,37 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 
 import { MailCompose } from "./MailCompose.jsx"
 
-
-
+const folders = [
+    { label: 'All Inboxes', path: 'all', icon: 'fa-inbox' },
+    { label: 'Primary', path: 'primary', icon: 'fa-envelope' },
+    { label: 'Promotions', path: 'promotions', icon: 'fa-tags' },
+    { label: 'Social', path: 'social', icon: 'fa-users' },
+    { label: 'Updates', path: 'updates', icon: 'fa-bell' },
+    { label: 'Starred', path: 'starred', icon: 'fa-star' },
+    { label: 'Snoozed', path: 'snoozed', icon: 'fa-clock' },
+    { label: 'Important', path: 'important', icon: 'fa-exclamation' },
+    { label: 'Sent', path: 'sent', icon: 'fa-paper-plane' },
+    { label: 'Drafts', path: 'drafts', icon: 'fa-file-alt' },
+    { label: 'Spam', path: 'spam', icon: 'fa-ban' },
+    { label: 'Trash', path: 'trash', icon: 'fa-trash' }
+]
+// console.log(folders)
 export function MailFolderList({ mails }) {
-
     return (
         <div>
             <MailCompose mails={mails} />
-            <h1>Hi</h1>
+            <section className="mail-menu">
+                {folders.map(folder => (
+                    <div key={folder.path} className="menu-item">
+                        <Link to={`/mail/${folder.path}`}>
+                            <i className={`fas ${folder.icon}`}></i>
+                            <span>{folder.label}</span>
+                        </Link>
+                    </div>
+                ))}
+            </section>
         </div>
     )
 }

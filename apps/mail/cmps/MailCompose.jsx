@@ -2,6 +2,7 @@
 
 export function MailCompose() {
     return <button className='compose-btn'>
-        <i className='fa-solid fa-pencil'></i> Compose
+        <span><i className='fa-solid fa-pencil'></i></span>
+        <span>Compose</span>
     </button>
 }

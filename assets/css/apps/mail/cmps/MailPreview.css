@@ -32,6 +32,10 @@
     z-index: 1;
 }
 
+.read {
+    background-color: #F2F6FC;
+}
+
 @media(max-width: 700px) {
     .mails-table tr {
         display: grid;

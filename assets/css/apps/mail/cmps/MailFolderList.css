@@ -1,0 +1,9 @@
+.menu-item>* {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 5px 0;
+}
+
+.menu-item:first-child {
+    margin-top: 15px;
+}
