@@ -1,4 +1,5 @@
 
+import { NoteService } from '../../../services/note.services.js'
 import { NotePreview } from '../cmps/NotePreview.jsx'
 
 const { useEffect, useState } = React
@@ -7,35 +8,10 @@ const { useEffect, useState } = React
 export function NoteIndex() {
     const [notes, setNotes] = useState([])
     useEffect(() => {
-        const hardcodedNotes = [
-            {
-                id: 'n101',
-                type: 'NoteTxt',
-                isPinned: true,
-                info: { txt: 'fullstack Me Baby!' }
-            },
-            {
-                id: 'n102',
-                type: 'NoteImg',
-                isPinned: false,
-                info: { url: '/assets/img/1.jpg', alt: 'image-placeholder', title: 'Cute Kitten' }
-            },
-            {
-                id: 'n103',
-                type: 'NoteTodos',
-                isPinned: false,
-                info: {
-                    title: 'Get my stuff together',
-                    todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
-                    ]
-                }
-            }
-        ]
-        setNotes(hardcodedNotes)
-    }, [])
+        NoteService.query().then(setNotes)
+},[])
 
+     
     return (
         <section className="note-index">
             <h2>MissKeep Notes</h2>
