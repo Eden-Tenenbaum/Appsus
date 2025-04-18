@@ -36,7 +36,7 @@
     background-color: #F2F6FC;
 }
 
-@media(max-width: 700px) {
+@media(max-width: 830px) {
     .mails-table tr {
         display: grid;
         grid-template-columns: 5fr 1fr;

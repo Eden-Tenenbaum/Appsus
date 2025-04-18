@@ -3,6 +3,8 @@ import { utilService } from "../../../services/util.service.js"
 const { useNavigate, useParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
+import { MailActions } from "./MailActions.jsx"
+
 export function MailDetails() {
 
     const [mail, setMail] = useState(null)
@@ -22,12 +24,10 @@ export function MailDetails() {
             .finally(() => setIsLoading(false))
     }
 
-
     function onBack() {
         navigate('/mail/primary')
         // navigate(-1)
     }
-    console.log('you are here')
 
     if (isLoading) return <div className="loader">Loading...</div>
     if (!mail) return <div className="error">Mail not found</div>
@@ -37,6 +37,7 @@ export function MailDetails() {
 
     return (
         <div className="mail-details">
+            <MailActions mail={mail}></MailActions>
             <p className="subject">{subject}</p>
             <p>
                 <span className="from">{from}</span>
