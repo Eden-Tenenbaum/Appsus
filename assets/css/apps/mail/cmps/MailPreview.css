@@ -17,14 +17,27 @@
     padding: 4px 5px;
 }
 
-.mails-table table tbody tr td:nth-child(3n) {
+.mail-body {
     opacity: 0.7;
     padding-right: 6px;
 }
 
-.mails-table table tbody tr td:nth-child(4n) {
+.mail-date {
     font-size: 0.8rem;
     overflow-wrap: anywhere;
+}
+
+.mail-starred .fa-solid{
+    color: rgb(246, 220, 26);
+}
+
+.mail-starred .fa-regular{
+    color: #202124;
+    opacity: 0.6;
+}
+
+.mails-table tr:hover .mail-starred .fa-regular{
+    opacity: 1;
 }
 
 .mails-table tr:hover {
@@ -36,6 +49,7 @@
 .read {
     background-color: #F2F6FC;
 }
+
 
 @media(max-width: 830px) {
     .mails-table tr {
@@ -51,18 +65,29 @@
         text-align: left;
     }
 
-    .mails-table tr td:nth-child(2n) {
+    .mail-from {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .mail-subject {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .mail-body {
         grid-column: 1/2;
         grid-row: 3/4;
     }
 
-    .mails-table tr td:nth-child(3n) {
-        grid-column: 1/2;
-        grid-row: 2/3;
+    .mail-date {
+        grid-column: 2/3;
+        grid-row: 1/2;
     }
 
-    .mails-table tr td:last-child {
+    .mail-starred {
         grid-column: 2/3;
-        grid-row: 2/3;
-}
+        grid-row: 3/4;
+        z-index: 1;
+    }
 }

@@ -6,7 +6,17 @@ export function MailPreview({ mail }) {
     const navigate = useNavigate()
     const isRead = mail.isRead ? 'read' : 'unread'
 
-    // console.log('you are here')
+    function toggleStarred(icon) {
+        if (mail.isStarred) {
+            icon.classList.remove('fa-solid')
+            icon.classList.add('fa-regular')
+            mail.isStarred = false
+        } else {
+            icon.classList.add('fa-solid')
+            icon.classList.remove('fa-regular')
+            mail.isStarred = true
+        }
+    }
 
     return (
         <tr className={isRead} onClick={() => navigate(`/mail/details/${mail.id}`, { state: { mail } })}>
@@ -14,8 +24,11 @@ export function MailPreview({ mail }) {
             <td className='mail-subject'>{utilService.limitText(mail.subject)}</td>
             <td className='mail-body'>{utilService.limitText(mail.body)}</td>
             <td className='mail-date'>{utilService.formatTimeSent(mail.sentAt)}</td>
-            {/* <td> <button></button> </td>
-            <td> <button></button> </td> */}
+            <td className="mail-starred" onClick={(ev) => {
+                ev.stopPropagation()
+                const star = ev.currentTarget.querySelector('i')
+                toggleStarred(star)
+            }}><i className="fa-regular fa-star"></i></td>
         </tr>
     )
 }
