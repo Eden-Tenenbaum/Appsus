@@ -1,10 +1,10 @@
 
 
-export function MailActions({ mail }) {
+export function MailActions({ mail, onBack }) {
     return (
         <div className="mail-actions-btns">
             <span>
-                <button title="Back">
+                <button title="Back" onClick={() => onBack()}>
                     <i className="fas fa-arrow-left"></i>
                 </button>
             </span>

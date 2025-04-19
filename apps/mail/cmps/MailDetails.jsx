@@ -37,7 +37,7 @@ export function MailDetails() {
 
     return (
         <div className="mail-details">
-            <MailActions mail={mail}></MailActions>
+            <MailActions mail={mail} onBack={onBack}></MailActions>
             <p className="subject">{subject}</p>
             <p>
                 <span className="from">{from}</span>
