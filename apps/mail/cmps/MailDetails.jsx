@@ -3,7 +3,7 @@ import { utilService } from "../../../services/util.service.js"
 const { useNavigate, useParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
-import { MailActions } from "./MailActions.jsx"
+import { DetailsActions } from "./DetailsActions.jsx"
 
 export function MailDetails() {
 
@@ -37,7 +37,7 @@ export function MailDetails() {
 
     return (
         <div className="mail-details">
-            <MailActions mail={mail} onBack={onBack}></MailActions>
+            <DetailsActions mail={mail} onBack={onBack}></DetailsActions>
             <p className="subject">{subject}</p>
             <p>
                 <span className="from">{from}</span>

@@ -25,9 +25,9 @@ export function MailFolderList({ mails }) {
 
     const unread = mails.filter(mail => !mail.isRead)
     return (
-        <div>
+        <div className="mail-menu">
             <ComposeBtn mails={mails} />
-            <section className="mail-menu">
+            <section className="mail-fodler-list">
                 {folders.map(folder => (
                     <div key={folder.path} className="menu-item">
                         <Link to={`/mail/${folder.path}`}>

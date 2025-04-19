@@ -9,8 +9,6 @@ export function ComposeBtn() {
         return (bool) ? setIsOpen(false) : setIsOpen(true)
     }
 
-    console.log("is open: ", isOpen)
-
     return (
         <div>
             <button className='compose-btn' onClick={() => toggleIsOpen(isOpen)}>

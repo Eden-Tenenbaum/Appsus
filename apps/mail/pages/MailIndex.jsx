@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 const { Link, Route, Routes, Navigate } = ReactRouterDOM
 
+import { showUserMsg, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { mailsService } from "../services/mail.service.js"
 import { MailList } from "../cmps/MailList.jsx"
 import { MailPreview } from "../cmps/MailPreview.jsx"
@@ -28,7 +29,6 @@ export function MailIndex() {
                 showErrorMsg(`couldn't remove Mail`)
             })
     }
-
     // console.log('you are here')
 
     return (
@@ -37,7 +37,7 @@ export function MailIndex() {
             <Routes>
                 <Route path="/" element={<Navigate to="inbox" />} />
                 <Route
-                    path=":folder"
+                    path=":folder" p
                     element={<MailList mails={mails} onRemove={removeMail} />}
                 />
             </Routes>
