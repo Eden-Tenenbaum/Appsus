@@ -1,10 +1,14 @@
 
 
-export function NotePreview({ note }) {
+export function NotePreview({ note, onEdit, onDelete }) {
     const DynamicCmp = getCmp(note.type)
 
     return <div className="note-preview" style={{ backgroundColor: note.style && note.style.backgroundColor }}>
         <DynamicCmp info={note.info} />
+        <div className="note-action">
+            <button onClick={onEdit}>edit</button>
+            <button onClick={onDelete}>delete</button>
+        </div>
     </div>
 }
 
@@ -40,7 +44,8 @@ function NoteTodos({ info }) {
         <h4 className="note-title">{info.title}</h4>
         <ul>
             {info.todos.map((todo, idx) => (
-                <li key={idx} style={{ className: todo.doneAt ? 'line-through' : 'none' }}>
+                <li key={idx}
+                    className={todo.doneAt ? 'line-through' : 'none'}>
                     <div className="note-txt">
                         {todo.txt}
                     </div>

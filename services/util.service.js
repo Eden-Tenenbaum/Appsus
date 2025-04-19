@@ -101,3 +101,16 @@ function limitText(text, maxLength = 60) { //move to util.service
     if (!text) return ''
     return text.length > maxLength ? text.slice(0, maxLength) + '...' : text
 }
+
+
+
+export function getTruthyValues(obj) {
+    const newObj = {}
+    for (const key in obj) {
+        const value = obj[key]
+        if (value) {
+            newObj[key] = value
+        }
+    }
+    return newObj
+}

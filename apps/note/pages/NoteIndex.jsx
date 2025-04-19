@@ -1,17 +1,27 @@
 
-import { noteService } from '../../../services/note.services.js'
+import { noteService } from '../../../services/note.service.js'
+import { getTruthyValues } from '../../../services/util.service.js'
 import { NotePreview } from '../cmps/NotePreview.jsx'
 
 const { useEffect, useState } = React
-// const [notes, setNotes] = useState([])
+const { Link, useSearchParams, useNavigate } = ReactRouterDOM
 
 
 export function NoteIndex() {
+
     const [notes, setNotes] = useState([])
     const [newTxt, setNewTxt] = useState('')
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate()
+
+
     useEffect(() => {
+        setSearchParams(getTruthyValues({}))
         noteService.query().then(setNotes)
     }, [])
+
     function onAddNote() {
         if (!newTxt.trim()) return
 
@@ -20,10 +30,18 @@ export function NoteIndex() {
             isPinned: false,
             info: { txt: newTxt },
         }
+
         noteService.save(newNote).then(savedNote => {
             setNotes(prev => [...prev, savedNote])
             setNewTxt('')
         })
+    }
+
+    function onDeleteNote(noteId) {
+        noteService.remove(noteId).then(() => {
+            setNotes(prev => prev.filter(note => note.id !== noteId))
+        })
+
     }
 
     return (
@@ -41,7 +59,11 @@ export function NoteIndex() {
             </section>
             <div className="note-list">
                 {notes.map(note => (
-                    <NotePreview key={note.id} note={note} />
+                    <NotePreview
+                        key={note.id}
+                        note={note}
+                        onDelete={() => onDeleteNote(note.id)}
+                        onEdit={() => navigate(`/note/edit/${note.id}`)} />
                 ))}
             </div>
         </section>)
