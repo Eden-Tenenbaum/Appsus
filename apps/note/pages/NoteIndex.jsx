@@ -3,6 +3,8 @@ import { noteService } from '../../../services/note.service.js'
 import { getTruthyValues } from '../../../services/util.service.js'
 import { NotePreview } from '../cmps/NotePreview.jsx'
 
+
+
 const { useEffect, useState } = React
 const { Link, useSearchParams, useNavigate } = ReactRouterDOM
 
@@ -37,6 +39,21 @@ export function NoteIndex() {
         })
     }
 
+    function onSetNoteColor(noteId, color) {
+        const noteToUpdate = notes.find(note => note.id === noteId)
+        const updateNote = {
+            ...noteToUpdate,
+            style: { ...noteToUpdate.style, backgroundColor: color }
+        }
+        noteService.save(updateNote).then(() => {
+            setNotes(prevNotes =>
+                prevNotes.map(note =>
+                    note.id === noteId ? updateNote : note
+                )
+            )
+        })
+    }
+
     function onDeleteNote(noteId) {
         noteService.remove(noteId).then(() => {
             setNotes(prev => prev.filter(note => note.id !== noteId))
@@ -63,7 +80,8 @@ export function NoteIndex() {
                         key={note.id}
                         note={note}
                         onDelete={() => onDeleteNote(note.id)}
-                        onEdit={() => navigate(`/note/edit/${note.id}`)} />
+                        onEdit={() => navigate(`/note/edit/${note.id}`)}
+                        onSetColor={(color) => onSetNoteColor(note.id, color)} />
                 ))}
             </div>
         </section>)

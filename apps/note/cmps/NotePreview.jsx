@@ -1,14 +1,24 @@
+import { useState } from 'react'
+import { ColorInput } from '../cmps/ColorInput.jsx'
 
-
-export function NotePreview({ note, onEdit, onDelete }) {
+export function NotePreview({ note, onEdit, onDelete, onSetColor }) {
+    const [isColorPickerOpen, setIsColorPickerOper] = useState(false)
     const DynamicCmp = getCmp(note.type)
 
-    return <div className="note-preview" style={{ backgroundColor: note.style && note.style.backgroundColor }}>
+    return <div className="note-preview" style={{ backgroundColor: (note.style || {}).backgroundColor }}>
         <DynamicCmp info={note.info} />
         <div className="note-action">
             <button onClick={onEdit}>edit</button>
             <button onClick={onDelete}>delete</button>
+            <button onClick={() => setIsColorPickerOper(prev => !prev)} className="btn-color">🎨</button>
         </div>
+        
+        {isColorPickerOpen && (
+            <ColorInput
+                onSetColor={onSetColor}
+                backgroundColor={(note.style || {}).backgroundColor}
+            />
+        )}
     </div>
 }
 

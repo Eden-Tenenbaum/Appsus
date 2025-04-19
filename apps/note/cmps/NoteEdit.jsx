@@ -12,7 +12,7 @@ export function NoteEdit() {
         if (noteId) {
             noteService.get(noteId).then(setNoteToEdit)
         } else {
-            setNotesToEdit({
+            setNoteToEdit({
                 type: 'NoteTxt',
                 isPinned: false,
                 info: { txt: '' },
