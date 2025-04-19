@@ -5,10 +5,11 @@
 
 .mails-table tr {
     display: grid;
-    grid-template-columns: 25% 15% 50% 10%;
+    grid-template-columns: 5% 158px auto auto 10%;
     padding: 10px 0px;
     border-bottom: 0.1px solid rgba(128, 128, 128, 0.3);
     min-height: 40px;
+    /* max-height: 50px; */
     align-items: center;
     position: relative;
 }
@@ -24,7 +25,12 @@
 
 .mail-date {
     font-size: 0.8rem;
-    overflow-wrap: anywhere;
+    /* overflow-wrap: anywhere; */
+}
+
+.mail-starred {
+    grid-column: 1/2;
+    grid-row: 1/2;
 }
 
 .mail-starred .fa-solid{
@@ -51,7 +57,7 @@
 }
 
 
-@media(max-width: 830px) {
+@media(max-width: 700px) {
     .mails-table tr {
         display: grid;
         grid-template-columns: 5fr 1fr;
@@ -60,7 +66,6 @@
     }
 
     .mails-table tr td {
-        display: block;
         padding: 0.3em 0;
         text-align: left;
     }

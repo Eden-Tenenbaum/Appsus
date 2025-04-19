@@ -1,35 +1,37 @@
+import { mailsService } from '../services/mail.service.js'
 
 
-export function MailActions({ mail, onBack }) {
+export function MailActions({ mail, onRemove }) {
     return (
-        <div className="mail-actions-btns">
-            <span>
-                <button title="Back" onClick={() => onBack()}>
-                    <i className="fas fa-arrow-left"></i>
-                </button>
-            </span>
-            <span>
-                <button title="Archive">
-                    <i className="fas fa-box-archive"></i>
-                </button>
-            </span>
-            <span>
-                <button title="Bin">
-                    <i className="fas fa-trash"></i>
-                </button>
-            </span>
-            <span>
-                <button title="Mark as Unread">
-                    <i className="fas fa-envelope-open"></i>
-                </button>
-            </span>
-            <span>
-                <div className="dropdown">
-                    <button title="More Options">
-                        <i className="fas fa-ellipsis-v"></i>
-                    </button>
-                </div>
-            </span>
-        </div>
+        <td className="mail-actions-btns">
+            <i
+                className="fa-solid fa-box-archive"
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    console.log('archiving...')}
+                    }>
+            </i> {/* Archive */}
+            <i
+                className="fa-regular fa-trash-can"
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    onRemove(mail.id)
+                }}>
+            </i> {/* Delete */}
+            <i
+                className="fa-regular fa-envelope"
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    console.log('marked as read...')
+                }}>
+            </i> {/* Mark as Unread */}
+            <i
+                className="fa-regular fa-clock"
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    console.log('snoozing...')
+                }}>
+            </i> {/* Snooze */}
+        </td>
     )
 }

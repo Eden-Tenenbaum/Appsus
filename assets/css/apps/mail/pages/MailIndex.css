@@ -3,13 +3,15 @@
     grid-template-columns: 2fr 5fr;
 }
 
-/* @media (min-width:690px) {
+@media (min-width:900px) {
     .mails-container {
         display: grid;
-        grid-template-columns: 1.3fr 5fr;
+        grid-template-columns: 256px auto;
     }
-} */
+}
 
 .mail-menu {
     background-color: #F8FAFD;
+    max-width: 256px;
+    padding-left: 10px;
 }
