@@ -1,32 +1,95 @@
-.compose-btn {
-    display: grid;
-    grid-template-columns: 1fr 1fr 0.2fr;
-    border-radius: 10px 10px 10px 10px;
+.compose-modal {
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 2rem;
+
+    transform: rotateY(-90deg);
+    /* Start flipped */
+    transform-origin: right center;
+    /* Flip from the right */
+    animation: flipIn 0.5s forwards ease-out;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Animation */
+@keyframes flipIn {
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+.compose-modal button {
+    background-color: white;
     border: 0px;
-    padding: 0 24px 0 0;
-    height: 56px;
-    margin-top: 15px;
-    background-color: #d2edff;
 }
 
-.compose-btn span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-}
-
-.compose-btn span:first-child {
-    font-size: 14px;
-}
-
-.compose-btn span:first-child {
-    font-size: 18px;
-}
-
-.compose-btn:hover {
+.compose-modal button:hover {
     cursor: pointer;
-    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, .3),
-     0 4px 8px 3px rgba(60, 64, 67, .15);
 }
 
+.compose-modal input {
+    border: 0px;
+}
+
+.compose-modal input:focus {
+    outline: none;
+}
+
+.compose-modal-body:focus::placeholder {
+    opacity: 0;
+}
+
+.compose-modal p {
+    margin: 0;
+    border-bottom: 1px solid rgba(136, 136, 136, 0.1);
+    padding: 20px 0;
+}
+
+.compose-modal-from,
+.compose-modal-to {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+}
+
+.compose-modal-subject input,
+.compose-modal-body {
+    font-size: 1.05em;
+    padding: 20px 0px;
+}
+
+.compose-modal-subject {
+    padding: 2px 0 !important;
+}
+
+.compose-modal h1 {
+    display: none;
+}
+
+.compose-actions {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+}
+
+.compose-actions div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.compose-actions button {
+    font-size: 1.2em;
+}
+
+
+@media (min-width:836px) {
+    .compose-modal h1 {
+        display: block;
+    }
+}

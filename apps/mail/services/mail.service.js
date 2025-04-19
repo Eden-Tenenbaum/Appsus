@@ -13,6 +13,7 @@ export const mailsService = {
     get,
     remove,
     save,
+    getUser,
 }
 
 window.ms = mailsService
@@ -35,7 +36,7 @@ function query(filterBy = {}) {
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
-        // .then(mail => _setNextPrevBookId(mail))
+    // .then(mail => _setNextPrevBookId(mail))
 }
 
 
@@ -50,6 +51,16 @@ function save(mail) {
         return storageService.post(MAIL_KEY, mail)
     }
 }
+
+function getUser() {
+    const loggedinUser = {
+        email: 'user@appsus.com',
+        fullname: 'Mahatma Appsus'
+    }
+    return loggedinUser
+}
+
+
 
 
 // ~~~~~~~~~~~~~~~~LOCAL FUNCTIONS~~~~~~~~~~~~~~~~~~~
@@ -107,7 +118,7 @@ function _createMails() {
         from: 'alex@chatmail.com',
         to: 'user@appsus.com'
     }
-    
+
     const mail3 = {
         id: 'e103',
         createdAt: 1744892980857,

@@ -1,0 +1,32 @@
+.compose-btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.2fr;
+    border-radius: 10px 10px 10px 10px;
+    border: 0px;
+    padding: 0 24px 0 0;
+    height: 56px;
+    margin-top: 15px;
+    background-color: #d2edff;
+}
+
+.compose-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.compose-btn span:first-child {
+    font-size: 14px;
+}
+
+.compose-btn span:first-child {
+    font-size: 18px;
+}
+
+.compose-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, .3),
+     0 4px 8px 3px rgba(60, 64, 67, .15);
+}
+
