@@ -24,6 +24,7 @@
 
 .mails-table table tbody tr td:nth-child(4n) {
     font-size: 0.8rem;
+    overflow-wrap: anywhere;
 }
 
 .mails-table tr:hover {

@@ -14,7 +14,7 @@
 }
 
 .menu-item:nth-child(6) span {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     grid-column: 1/2;
     grid-row: 6/7;
     white-space: nowrap;

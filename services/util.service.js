@@ -84,14 +84,14 @@ function formatTimeSent(timestamp) { //move to util.service
         now.getDate() === sentDate.getDate()
 
     if (isSameDay) {
-        return sentDate.toLocaleTimeString(undefined, {
+        return sentDate.toLocaleTimeString('en-US', {
             hour: 'numeric',
             minute: '2-digit',
         })
     } else {
-        return sentDate.toLocaleDateString(undefined, {
-            month: 'short',
+        return sentDate.toLocaleDateString('en-US', {
             day: 'numeric',
+            month: 'short',
             ...(now.getFullYear() === sentDate.getFullYear() ? {} : { year: 'numeric' })
         })
     }
