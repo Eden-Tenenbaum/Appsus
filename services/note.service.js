@@ -9,19 +9,33 @@ _createNotes()
 export const noteService = {
     query,
     save,
+    remove,
+    get,
 }
 
 
 function query(filterBy = {}) {
     return storageService.query(NOTE_KEY)
 }
+
+function get(noteId) {
+    return storageService.get('noteDB', noteId)
+}
+
 function save(note) {
-    if(note.id) {
-        return storageService.put(NOTE_KEY,note)
+    if (note.id) {
+        return storageService.put(NOTE_KEY, note)
     } else {
-        return storageService.post(NOTE_KEY,note)
+        return storageService.post(NOTE_KEY, note)
     }
 }
+
+
+function remove(noteId) {
+    return storageService.remove('noteDB', noteId)
+}
+
+
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
