@@ -18,8 +18,12 @@ const folders = [
     { label: 'Spam', path: 'spam', icon: 'fa-ban' },
     { label: 'Bin', path: 'bin', icon: 'fa-trash' }
 ]
+
 // console.log(folders)
+
 export function MailFolderList({ mails }) {
+
+    const unread = mails.filter(mail => !mail.isRead)
     return (
         <div>
             <MailCompose mails={mails} />
@@ -29,6 +33,7 @@ export function MailFolderList({ mails }) {
                         <Link to={`/mail/${folder.path}`}>
                             <i className={`fas ${folder.icon}`}></i>  {/* change fas to far later for hollow icons - looks better */}
                             <span>{folder.label}</span>
+                            <span>{(folder.path === 'all') ? `${unread.length}` : '' }</span>
                         </Link>
                     </div>
                 ))}
