@@ -6,11 +6,13 @@ import { mailsService } from "../services/mail.service.js"
 
 const folders = [
     { label: 'All Inboxes', path: 'all', icon: 'fa-inbox' },
+    { label: 'Read', path: 'read'},
+    { label: 'Unread', path: 'unread'},
     { label: 'Primary', path: 'primary', icon: 'fa-envelope' },
     { label: 'Promotions', path: 'promotions', icon: 'fa-tags' },
     { label: 'Social', path: 'social', icon: 'fa-users' },
     { label: 'Updates', path: 'updates', icon: 'fa-bell' },
-    { label: 'All labels', path: '' },
+    { label: 'All labels', path: ''},
     { label: 'Starred', path: 'starred', icon: 'fa-star' },
     { label: 'Snoozed', path: 'snoozed', icon: 'fa-clock' },
     { label: 'Important', path: 'important', icon: 'fa-exclamation' },
@@ -22,7 +24,7 @@ const folders = [
 
 // console.log(folders)
 
-export function MailFolderList({ mails, refreshMails }) {
+export function MailFolderList({ mails, refreshMails, setFilterByFolder }) {
     const { email, fullname } = mailsService.getUser()
     const unread = mails.filter(mail => !mail.isRead && mail.to === email)
 
@@ -31,7 +33,7 @@ export function MailFolderList({ mails, refreshMails }) {
             <ComposeBtn mails={mails} refreshMails={refreshMails} />
             <section className="mail-fodler-list">
                 {folders.map(folder => (
-                    <div key={folder.path} className="menu-item">
+                    <div key={folder.path} className="menu-item" >
                         <Link to={`/mail/${folder.path}`}>
                             <i className={`fas ${folder.icon}`}></i>  {/* change fas to far later for hollow icons - looks better */}
                             <span>{folder.label}</span>

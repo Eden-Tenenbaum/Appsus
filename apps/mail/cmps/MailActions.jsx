@@ -10,28 +10,28 @@ export function MailActions({ mail, onRemove }) {
                     ev.stopPropagation()
                     console.log('archiving...')}
                     }>
-            </i> {/* Archive */}
+            </i>
             <i
                 className="fa-regular fa-trash-can"
                 onClick={(ev) => {
                     ev.stopPropagation()
                     onRemove(mail.id)
                 }}>
-            </i> {/* Delete */}
+            </i>
             <i
                 className="fa-regular fa-envelope"
                 onClick={(ev) => {
                     ev.stopPropagation()
                     console.log('marked as read...')
                 }}>
-            </i> {/* Mark as Unread */}
+            </i>
             <i
                 className="fa-regular fa-clock"
                 onClick={(ev) => {
                     ev.stopPropagation()
                     console.log('snoozing...')
                 }}>
-            </i> {/* Snooze */}
+            </i>
         </td>
     )
 }

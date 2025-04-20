@@ -14,6 +14,7 @@ import { MailFolderList } from "../cmps/MailFolderList.jsx"
 export function MailIndex() {
 
     const [mails, setMails] = useState([])
+    const [filterByFolder, setFilterByFolder] = useState('all')
 
     useEffect(() => {
         mailsService.query().then(setMails)
@@ -30,6 +31,10 @@ export function MailIndex() {
             })
     }
 
+    function updateMail(mail){
+        mailsService.save(mail)
+    }
+
     function refreshMails(){
         mailsService.query()
         .then(setMails)
@@ -38,12 +43,12 @@ export function MailIndex() {
 
     return (
         <div className='mails-container'>
-            <MailFolderList mails={mails} refreshMails={refreshMails}/>
+            <MailFolderList mails={mails} refreshMails={refreshMails} setFilterByFolder={setFilterByFolder}/>
             <Routes>
                 <Route path="/" element={<Navigate to="inbox" />} />
                 <Route
                     path=":folder" p
-                    element={<MailList mails={mails} onRemove={removeMail} />}
+                    element={<MailList mails={mails} onRemove={removeMail} updateMail={updateMail} />}
                 />
             </Routes>
         </div>

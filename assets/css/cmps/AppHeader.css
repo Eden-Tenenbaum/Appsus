@@ -8,7 +8,7 @@ header {
     justify-content: space-between;
     height: auto;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
 }
 
 nav a {
@@ -27,4 +27,26 @@ nav a.active {
 
 .app-header h3 {
     padding-right: 170.844px;
+}
+
+.search-option {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+}
+
+.search-option i {
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+}
+
+.search-option-date {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.search-option-preview p:nth-child(2) {
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.8);
 }
