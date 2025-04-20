@@ -29,11 +29,16 @@ export function MailIndex() {
                 showErrorMsg(`couldn't remove Mail`)
             })
     }
+
+    function refreshMails(){
+        mailsService.query()
+        .then(setMails)
+    }
     // console.log('you are here')
 
     return (
         <div className='mails-container'>
-            <MailFolderList mails={mails} />
+            <MailFolderList mails={mails} refreshMails={refreshMails}/>
             <Routes>
                 <Route path="/" element={<Navigate to="inbox" />} />
                 <Route

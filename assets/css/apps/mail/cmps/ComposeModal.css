@@ -35,11 +35,13 @@
     cursor: pointer;
 }
 
-.compose-modal input {
+.compose-modal input,
+textarea {
     border: 0px;
 }
 
-.compose-modal input:focus {
+.compose-modal input:focus,
+.compose-modal textarea:focus {
     outline: none;
 }
 
@@ -61,12 +63,24 @@
 
 .compose-modal-subject input,
 .compose-modal-body {
-    font-size: 1.05em;
+    font-size: 1.0rem;
     padding: 20px 0px;
 }
 
 .compose-modal-subject {
     padding: 2px 0 !important;
+}
+
+.compose-modal-body {
+    height: 60vh;
+    width: 80vw;
+    font-size: 1.05rem;
+    font-family: 'Roboto';
+}
+
+
+.compose-modal-to input {
+    font-size: 1rem;
 }
 
 .compose-modal h1 {

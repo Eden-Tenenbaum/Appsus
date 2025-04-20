@@ -33,7 +33,5 @@ export function MailPreview({ mail, onRemove }) {
             }}><i className="fa-regular fa-star"></i></td>
             <MailActions mail={mail} onRemove={onRemove}/>
         </tr>
-        
-        
     )
 }

@@ -1,22 +1,18 @@
 import {MailCompose} from "./MailCompose.jsx"
 const { useState, useEffect } = React
 
-export function ComposeBtn() {
+export function ComposeBtn({ refreshMails }) {
 
     const [isOpen, setIsOpen] = useState(false)
 
-    function toggleIsOpen(bool){
-        return (bool) ? setIsOpen(false) : setIsOpen(true)
-    }
-
     return (
         <div>
-            <button className='compose-btn' onClick={() => toggleIsOpen(isOpen)}>
+            <button className='compose-btn' onClick={() => setIsOpen(true)}>
                 <span><i className='fa-solid fa-pencil'></i></span>
                 <span>Compose</span>
             </button>
 
-            {isOpen && <MailCompose setIsOpen={setIsOpen}/>}
+                {isOpen && <MailCompose setIsOpen={setIsOpen} refreshMails={refreshMails} />}
         </div>
     )
 }

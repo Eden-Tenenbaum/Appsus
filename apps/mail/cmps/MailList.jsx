@@ -6,6 +6,7 @@ const { useEffect, useState } = React
 
 
 export function MailList({ mails, onRemove }) {
+    const { email, fullname } = mailsService.getUser()
     console.log('mails: ', mails)
 
     const [mail, setMail] = useState(null)
@@ -33,8 +34,12 @@ export function MailList({ mails, onRemove }) {
             ) : (
                 <table>
                     <tbody>
-                        {mails.map(mail =>
-                            <MailPreview key={mail.id} mail={mail} onRemove={onRemove} />
+                        {mails.filter(mail => mail.to === email)
+                        .map(mail =>  
+                            <MailPreview key={mail.id}
+                                mail={mail}
+                                onRemove={onRemove}
+                            />
                         )}
                     </tbody>
                 </table>

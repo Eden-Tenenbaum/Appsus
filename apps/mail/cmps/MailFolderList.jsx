@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
 
 import { ComposeBtn } from "./ComposeBtn.jsx"
+import { mailsService } from "../services/mail.service.js"
 
 const folders = [
     { label: 'All Inboxes', path: 'all', icon: 'fa-inbox' },
@@ -21,12 +22,13 @@ const folders = [
 
 // console.log(folders)
 
-export function MailFolderList({ mails }) {
+export function MailFolderList({ mails, refreshMails }) {
+    const { email, fullname } = mailsService.getUser()
+    const unread = mails.filter(mail => !mail.isRead && mail.to === email)
 
-    const unread = mails.filter(mail => !mail.isRead)
     return (
         <div className="mail-menu">
-            <ComposeBtn mails={mails} />
+            <ComposeBtn mails={mails} refreshMails={refreshMails} />
             <section className="mail-fodler-list">
                 {folders.map(folder => (
                     <div key={folder.path} className="menu-item">
