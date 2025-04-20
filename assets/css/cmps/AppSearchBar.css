@@ -1,0 +1,19 @@
+.app-search-bar {
+    width: 100%;
+    background-color: #e9eef6;
+    border-radius: 9999px;
+    padding: 20px 10px;
+}
+
+.app-search-bar input {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.app-search-bar input:focus {
+    outline: none;
+}
+
+.app-search-bar:has(input:focus) {
+    background-color: white;
+}

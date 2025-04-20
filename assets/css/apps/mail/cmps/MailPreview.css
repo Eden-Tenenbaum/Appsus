@@ -5,7 +5,7 @@
 
 .mails-table tr {
     display: grid;
-    grid-template-columns: 5% 158px auto auto 10%;
+    grid-template-columns: 5% 158px 1fr 4fr 10%;
     padding: 10px 0px;
     border-bottom: 0.1px solid rgba(128, 128, 128, 0.3);
     min-height: 40px;
@@ -55,7 +55,6 @@
 .read {
     background-color: #F2F6FC;
 }
-
 
 @media(max-width: 700px) {
     .mails-table tr {

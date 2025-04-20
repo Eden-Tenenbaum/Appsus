@@ -1,6 +1,6 @@
 header {
-    background: lightcyan;
-    border-bottom: 2px solid white;
+    background: var(--main-gmail-color);
+    border-bottom: 2px solid var(--main-gmail-color);
 }
 
 .app-header {
@@ -23,4 +23,8 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+}
+
+.app-header h3 {
+    padding-right: 170.844px;
 }

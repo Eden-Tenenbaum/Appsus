@@ -1,3 +1,4 @@
+import { AppSearchBar } from "./AppSearchBar.jsx"
 const { Link, NavLink } = ReactRouterDOM
 
 export function AppHeader() {
@@ -6,6 +7,7 @@ export function AppHeader() {
         <Link to="/">
             <h3>LOGO!</h3>
         </Link>
+        <AppSearchBar />
         <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>

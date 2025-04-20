@@ -11,7 +11,7 @@
 }
 
 .mail-menu {
-    background-color: #F8FAFD;
+    background-color: var(--main-gmail-color);
     max-width: 256px;
     padding-left: 10px;
 }

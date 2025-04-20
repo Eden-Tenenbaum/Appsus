@@ -35,7 +35,7 @@ export function MailFolderList({ mails, refreshMails }) {
                         <Link to={`/mail/${folder.path}`}>
                             <i className={`fas ${folder.icon}`}></i>  {/* change fas to far later for hollow icons - looks better */}
                             <span>{folder.label}</span>
-                            <span>{(folder.path === 'all') ? `${unread.length}` : ''}</span>
+                            <span>{(folder.path === 'primary') ? `${unread.length}` : ''}</span>
                         </Link>
                     </div>
                 ))}
