@@ -8,8 +8,22 @@ export function AppSearchBar() {
 
     const [isOpen, setIsOpen] = useState(false)
     const [searchValue, setSearchValue] = useState('')
+    const [filteredMails, setFilteredMails] = useState([])
 
     const mails = utilService.loadFromStorage("mailDB")
+
+        function filterMails(searchStr) {
+            const lowerSearch = searchStr.toLowerCase()
+          
+            const filtered = mails.filter(mail =>
+              mail.from.toLowerCase().includes(lowerSearch) ||
+              mail.to.toLowerCase().includes(lowerSearch) ||
+              mail.subject.toLowerCase().includes(lowerSearch) ||
+              mail.body.toLowerCase().includes(lowerSearch)
+            )
+
+            setFilteredMails(filtered)
+          }
 
     return (
         <div className="app-search-bar-container">
@@ -20,7 +34,10 @@ export function AppSearchBar() {
                         <i className="fa-solid fa-magnifying-glass"></i>
                         <input
                             type="text" placeholder="Search"
-                            value={searchValue} onChange={ev => setSearchValue(ev.target.value)}
+                            value={searchValue} onChange={ev => {
+                                setSearchValue(ev.target.value)
+                                filterMails(ev.target.value)
+                            }}
                             onFocus={() => setIsOpen(true)}
                             onBlur={() => setIsOpen(false)}
                         />
@@ -29,7 +46,7 @@ export function AppSearchBar() {
                         <section className="search-dropdown">
                             <table>
                                 <tbody>
-                                    {mails.map(mail =>
+                                    {filteredMails.map(mail =>
                                         <MailSearchPreview
                                             key={mail.id}
                                             mail={mail}
