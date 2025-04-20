@@ -6,7 +6,7 @@ const { Link, useParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
 
-export function MailList({ mails, onRemove, updateMail }) {
+export function MailList({ mails, onRemove, updateMail, filterMails, refreshMails }) {
     const { email, fullname } = mailsService.getUser()
 
     console.log('mails: ', mails)
@@ -37,12 +37,13 @@ export function MailList({ mails, onRemove, updateMail }) {
             ) : (
                 <table>
                     <tbody>
-                        {mails.filter(mail => mail.to === email)
-                        .map(mail =>  
+                        {/* <FilterBtn /> */}
+                        {mails.map(mail =>  
                             <MailPreview key={mail.id}
                                 mail={mail}
                                 onRemove={onRemove}
                                 updateMail={updateMail}
+                                refreshMails={refreshMails}
                             />
                         )}
                     </tbody>

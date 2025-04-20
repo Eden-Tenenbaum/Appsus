@@ -26,14 +26,17 @@ const folders = [
 
 export function MailFolderList({ mails, refreshMails, setFilterByFolder }) {
     const { email, fullname } = mailsService.getUser()
-    const unread = mails.filter(mail => !mail.isRead && mail.to === email)
+    const unread = mails.filter(mail => !mail.read && mail.to === email)
 
     return (
         <div className="mail-menu">
             <ComposeBtn mails={mails} refreshMails={refreshMails} />
             <section className="mail-fodler-list">
                 {folders.map(folder => (
-                    <div key={folder.path} className="menu-item" >
+                    <div key={folder.path} className="menu-item" 
+                    onClick={() => {
+                        setFilterByFolder(folder.path)
+                    }}>
                         <Link to={`/mail/${folder.path}`}>
                             <i className={`fas ${folder.icon}`}></i>  {/* change fas to far later for hollow icons - looks better */}
                             <span>{folder.label}</span>

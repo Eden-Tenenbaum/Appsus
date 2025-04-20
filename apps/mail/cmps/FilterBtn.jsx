@@ -1,7 +1,7 @@
 
 
-export function FilterBtn() {
+export function SortBtn() {
     return (
-        <button></button>
+        <tr></tr>
     )
 }

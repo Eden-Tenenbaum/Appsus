@@ -10,15 +10,21 @@ import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
 
 
-
 export function MailIndex() {
 
     const [mails, setMails] = useState([])
+    const [filteredMails, setFilteredMails] = useState([])
     const [filterByFolder, setFilterByFolder] = useState('all')
+
+    const { email, fullname } = mailsService.getUser()
 
     useEffect(() => {
         mailsService.query().then(setMails)
     }, [])
+
+    useEffect(() => {
+        filterMails()
+    }, [mails, filterByFolder])
 
     function removeMail(mailId) {
         mailsService.remove(mailId)
@@ -31,24 +37,40 @@ export function MailIndex() {
             })
     }
 
-    function updateMail(mail){
+    function updateMail(mail) {
         mailsService.save(mail)
     }
 
-    function refreshMails(){
+    function refreshMails() {
         mailsService.query()
-        .then(setMails)
+            .then(setMails)
+    }
+
+    function filterMails() {
+        if (filterByFolder === 'all' || filterByFolder === 'primary') {
+            const noBin = mails.filter(mail => !mail.bin && mail.from !== email)
+            setFilteredMails(noBin)
+        } else {
+            const filtered = mails.filter(mail => mail[filterByFolder] === true)
+            setFilteredMails(filtered)
+        }
     }
     // console.log('you are here')
 
     return (
         <div className='mails-container'>
-            <MailFolderList mails={mails} refreshMails={refreshMails} setFilterByFolder={setFilterByFolder}/>
+            <MailFolderList mails={mails} refreshMails={refreshMails} setFilterByFolder={setFilterByFolder} />
             <Routes>
                 <Route path="/" element={<Navigate to="inbox" />} />
                 <Route
                     path=":folder" p
-                    element={<MailList mails={mails} onRemove={removeMail} updateMail={updateMail} />}
+                    element={<MailList
+                        mails={filteredMails}
+                        onRemove={removeMail}
+                        updateMail={updateMail}
+                        filterMails={filterMails}
+                        refreshMails={refreshMails}
+                    />}
                 />
             </Routes>
         </div>

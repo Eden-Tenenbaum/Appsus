@@ -3,30 +3,30 @@ import { MailActions } from "./MailActions.jsx"
 const { Link, useNavigate } = ReactRouterDOM
 
 
-export function MailPreview({ mail, onRemove, updateMail }) {
+export function MailPreview({ mail, onRemove, updateMail, refreshMails }) {
     const navigate = useNavigate()
-    const isRead = mail.isRead ? 'read' : 'unread'
+    const isRead = mail.read ? 'read' : 'unread'
 
     function toggleStarred(icon) {
-        if (mail.isStarred) {
+        if (mail.starred) {
             icon.classList.remove('fa-solid')
             icon.classList.add('fa-regular')
-            mail.isStarred = false
+            mail.starred = false
         } else {
             icon.classList.add('fa-solid')
             icon.classList.remove('fa-regular')
-            mail.isStarred = true
+            mail.starred = true
         }
     }
 
-    function updateIsRead() {
-        mail.isRead = true
+    function toggleRead(bool) {
+        mail.read = bool
         updateMail(mail)
     }
 
     return (
         <tr className={isRead} onClick={() => {
-            updateIsRead()
+            toggleRead(true)
             navigate(`/mail/details/${mail.id}`,
                 { state: { mail } })
         }}>
@@ -39,7 +39,13 @@ export function MailPreview({ mail, onRemove, updateMail }) {
                 const star = ev.currentTarget.querySelector('i')
                 toggleStarred(star)
             }}><i className="fa-regular fa-star"></i></td>
-            <MailActions mail={mail} onRemove={onRemove} />
+            <MailActions 
+            mail={mail} 
+            onRemove={onRemove} 
+            updateMail={updateMail}
+            refreshMails={refreshMails}
+            toggleRead={toggleRead}
+             />
         </tr>
     )
 }
