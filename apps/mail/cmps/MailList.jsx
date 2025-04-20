@@ -1,13 +1,16 @@
 import { mailsService } from '../services/mail.service.js'
 import { utilService } from "../../../services/util.service.js"
 import { MailPreview } from "./MailPreview.jsx"
+import { FilterBtn } from "./FilterBtn.jsx"
 const { Link, useParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
 
 export function MailList({ mails, onRemove, updateMail }) {
     const { email, fullname } = mailsService.getUser()
+
     console.log('mails: ', mails)
+    mails.sort((a, b) => new Date(b.sentAt) - new Date(a.sentAt))
 
     const [mail, setMail] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
