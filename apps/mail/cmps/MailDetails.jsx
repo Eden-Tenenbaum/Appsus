@@ -38,16 +38,38 @@ export function MailDetails() {
     return (
         <div className="mail-details">
             <DetailsActions mail={mail} onBack={onBack}></DetailsActions>
-            <p className="subject">{subject}</p>
-            <p>
-                <span className="from">{from}</span>
-                <span className="date">{utilService.formatTimeSent(mail.sentAt)}</span>
-            </p>
-            <p>
-                <span>to me </span>
-                <button className="mail-info-btn"><i className="fa-solid fa-chevron-down"></i></button>
-            </p>
-            <p className="body">{body}</p>
+            <div className="mail-contents">
+                <p className="subject">
+                    {subject}
+                    <button><i className="fa-regular fa-star"></i></button>
+                </p>
+                <div className="mail-details-info-row">
+                    <div className="user-icon-box">
+                        <span className="user-icon">A</span>
+                    </div>
+                    <div className="mail-details-info">
+                        <p className="mail-details-from">
+                            <span className="from">{from}</span>
+                            <span className="date">{utilService.formatTimeSent(mail.sentAt)}</span>
+                        </p>
+                        <p className="mail-details-to">
+                            <span>to me </span>
+                            <button className="mail-info-btn"><i className="fa-solid fa-chevron-down"></i></button>
+                        </p>
+                    </div>
+                    <div className="mail-info-row-placeholder"></div>
+                        <button title="React">
+                            <i className="fa-regular fa-face-smile"></i>
+                        </button>
+                        <button title="Reply">
+                            <i className="fa-solid fa-reply"></i>
+                        </button>
+                        <button title="More options">
+                            <i className="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                </div>
+                <p className="body">{body}</p>
+            </div>
         </div>
     )
 }

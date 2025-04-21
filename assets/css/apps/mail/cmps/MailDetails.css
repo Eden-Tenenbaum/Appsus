@@ -2,7 +2,120 @@
     overflow-wrap: anywhere;
 }
 
-.mail-details:not(.body) {
-    background-color: rgb(237, 241, 242, 0.3);
+.mails-details {
+    width: 100%;
 }
 
+.body:not(.mails)
+
+.mail-details button:hover{
+    cursor: pointer;
+}
+
+.details-actions-btns {
+    justify-content: space-between;
+}
+
+.details-actions-btns button {
+    background-color: var(--main-gmail-color);
+    border: none;
+}
+
+.details-actions-btns {
+    display: grid;
+    grid-template-columns: 80px auto;
+}
+
+.back-btn {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+}
+
+button[title="Back"] {
+    font-size: 1.2rem;
+}
+
+.abmd-btns {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.abmd-btns button {
+    font-size: 1.2rem;
+    padding-left: 50px;
+}
+
+.mail-contents {
+    padding: 20px;
+}
+
+.mail-contents button {
+    background-color: var(--main-gmail-color);
+    border: none;
+}
+
+.subject {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+}
+
+.from {
+    padding-right: 20px;
+}
+
+.date {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.mail-info-btn {
+    background-color: var(--main-gmail-color);
+    border: none;
+}
+
+.mail-details-info-row {
+    display: grid;
+    grid-template-columns: 0.6fr 2.5fr 2fr 0.6fr 0.6fr 0.6fr;
+}
+
+.user-icon {
+    border-radius: 50%;
+    background-color: rgb(27, 159, 124);
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon:hover {
+    cursor: pointer;
+}
+
+.mail-details-to, .mail-info-btn {
+    font-size: 0.6rem;
+    opacity: 0.7;
+}
+
+.body {
+    text-align: center;
+}
+
+button[title="React"] i,
+button[title="Reply"] i,
+button[title="More options"] i
+{
+    font-size: 1.2rem
+}

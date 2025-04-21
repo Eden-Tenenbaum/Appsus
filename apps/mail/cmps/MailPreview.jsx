@@ -28,7 +28,7 @@ export function MailPreview({ mail, onRemove, updateMail, refreshMails }) {
         <tr className={isRead} onClick={() => {
             toggleRead(true)
             navigate(`/mail/details/${mail.id}`,
-                { state: { mail } })
+                { state: { mail , updateMail, refreshMails } })
         }}>
             <td className='mail-from'>{utilService.limitText(mail.from, 40)}</td>
             <td className='mail-subject'>{utilService.limitText(mail.subject)} - </td>
