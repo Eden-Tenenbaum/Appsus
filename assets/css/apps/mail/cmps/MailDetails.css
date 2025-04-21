@@ -109,9 +109,6 @@ button[title="Back"] {
     opacity: 0.7;
 }
 
-.body {
-    text-align: center;
-}
 
 button[title="React"] i,
 button[title="Reply"] i,
